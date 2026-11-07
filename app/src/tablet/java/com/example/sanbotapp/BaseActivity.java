@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private boolean isVoiceEnabled = true;
     private View btnMicUI;
     private TextView tvEstadoMicUI;
-    private String textoOriginalMic = "PULSA PARA HABLAR";
+    private String textoOriginalMic;
     private String lastSpokenText = "";
 
     protected final android.os.Handler mainHandler = new android.os.Handler(android.os.Looper.getMainLooper());
@@ -138,7 +138,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                 ));
             }
             if (tvEstadoMicUI != null) {
-                tvEstadoMicUI.setText(listening ? "TE ESTOY ESCUCHANDO..." : textoOriginalMic);
+                tvEstadoMicUI.setText(listening ? getString(R.string.mic_escuchando)
+                        : (textoOriginalMic != null ? textoOriginalMic : getString(R.string.ui_pulsa_para_hablar_2)));
                 tvEstadoMicUI.setTextColor(getResources().getColor(listening ? R.color.mic_listening : R.color.mic_normal));
             }
         });
@@ -172,7 +173,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void onCabezaTocada() {
         if (!isVoiceEnabled) {
-            hablarOSimular("Lo siento, en esta pantalla no puedo escucharte. Por favor, usa los botones de la pantalla.");
+            hablarOSimular(getString(R.string.voz_no_puedo_escuchar_aqui));
         }
     }
 
