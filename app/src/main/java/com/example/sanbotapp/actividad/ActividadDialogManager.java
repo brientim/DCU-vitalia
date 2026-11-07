@@ -48,6 +48,7 @@ public class ActividadDialogManager {
 
     public void mostrarDialogoAnadir(final Actividad existente) {
         horaSeleccionada = (existente != null) ? existente.getHoraMinutos() : (9 * 60);
+        activity.setHoraSeleccionada(horaSeleccionada);
         diasSeleccionados = activity.getDiasSeleccionados();
         diasSeleccionados.clear();
         if (existente != null && existente.getDiasSemana() != null) {
