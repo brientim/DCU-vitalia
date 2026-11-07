@@ -34,7 +34,7 @@ public class JuegoRefranesActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego_refranes);
-        setupTopBackBanner("Juego de Refranes");
+        setupTopBackBanner(getString(R.string.juego_refranes_titulo));
         setVoiceEnabled(false); // Deshabilitar escucha en los refranes
 
         tvRefran = findViewById(R.id.tvBocadilloTexto);
@@ -54,11 +54,7 @@ public class JuegoRefranesActivity extends BaseActivity {
     }
 
     private void cargarPreguntas() {
-        listaPreguntas = new ArrayList<>();
-        listaPreguntas.add(new PreguntaRefran("A quien madruga, Dios le...", "Ayuda", "Mira", 1));
-        listaPreguntas.add(new PreguntaRefran("Más vale pájaro en mano que...", "Ciento volando", "Dos saltando", 1));
-        listaPreguntas.add(new PreguntaRefran("En boca cerrada no entran...", "Sombras", "Moscas", 2));
-        listaPreguntas.add(new PreguntaRefran("A caballo regalado no le mires el...", "Diente", "Pelo", 1));
+        listaPreguntas = ContenidoJuegos.preguntasRefranes(this);
     }
 
     private void mostrarPregunta() {
@@ -66,7 +62,7 @@ public class JuegoRefranesActivity extends BaseActivity {
             PreguntaRefran actual = listaPreguntas.get(indiceActual);
 
             if (tvEstadoPregunta != null) {
-                tvEstadoPregunta.setText("PREGUNTA " + (indiceActual + 1) + " DE " + listaPreguntas.size());
+                tvEstadoPregunta.setText(getString(R.string.refranes_contador, indiceActual + 1, listaPreguntas.size()));
             }
 
             if (tvRefran != null) {
@@ -112,7 +108,7 @@ public class JuegoRefranesActivity extends BaseActivity {
         boton.setTextColor(Color.WHITE);
 
         gestionarFeedbackHardware("ACIERTO");
-        hablarOSimular("¡Correcto! Excelente respuesta");
+        hablarOSimular(getString(R.string.refranes_correcto));
 
         handler.postDelayed(() -> {
             apagarLed(RobotLed.PART_ALL);
@@ -138,7 +134,7 @@ public class JuegoRefranesActivity extends BaseActivity {
         botonCorrecto.setTextColor(Color.WHITE);
 
         gestionarFeedbackHardware("FALLO");
-        hablarOSimular("Lástima, te acercabas");
+        hablarOSimular(getString(R.string.juego_lastima));
 //        moverCabezaBasico("ABAJO");
 //        reiniciarCabeza();
 
@@ -171,11 +167,11 @@ public class JuegoRefranesActivity extends BaseActivity {
 
         String mensaje;
         if (aciertos == listaPreguntas.size()) {
-            mensaje = "¡Excelente! Te sabes todos los refranes perfectamente.";
+            mensaje = getString(R.string.refranes_fin_todos);
         } else if (aciertos >= listaPreguntas.size() / 2) {
-            mensaje = "¡Muy bien! Te acuerdas de casi todo.";
+            mensaje = getString(R.string.refranes_fin_casi);
         } else {
-            mensaje = "Buen intento, seguro que en la próxima aciertas más.";
+            mensaje = getString(R.string.refranes_fin_intento);
         }
         intent.putExtra("MENSAJE", mensaje);
 

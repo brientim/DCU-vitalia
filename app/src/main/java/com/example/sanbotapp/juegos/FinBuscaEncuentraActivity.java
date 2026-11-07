@@ -13,7 +13,7 @@ public class FinBuscaEncuentraActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fin_busca_encuentra);
-        setupTopBackBanner("Busca y Encuentra");
+        setupTopBackBanner(getString(R.string.ui_busca_y_encuentra_2));
 
         long segundos = getIntent().getLongExtra("SEGUNDOS", 0);
 
@@ -22,18 +22,18 @@ public class FinBuscaEncuentraActivity extends BaseActivity {
             if (segundos < 3) {
                 mostrarEmocion("SURPRISE");
                 encenderLed(RobotLed.PART_ALL, RobotLed.MODE_GREEN);
-                tvRobot.setText("¡Increíble! Lo has encontrado en un abrir y cerrar de ojos.");
-                hablarOSimular("¡Increíble! Lo has encontrado en un abrir y cerrar de ojos.");
+                tvRobot.setText(R.string.busca_fin_rapido);
+                hablarOSimular(getString(R.string.busca_fin_rapido));
             } else if (segundos < 10) {
                 mostrarEmocion("PRISE");
                 encenderLed(RobotLed.PART_ALL, RobotLed.MODE_GREEN);
-                tvRobot.setText("¡Con tu ayuda lo he encontrado! ¡Eres increíble!");
-                hablarOSimular("¡Con tu ayuda lo he encontrado! ¡Eres increíble!");
+                tvRobot.setText(R.string.busca_fin_medio);
+                hablarOSimular(getString(R.string.busca_fin_medio));
             } else {
                 mostrarEmocion("SMILE");
                 encenderLed(RobotLed.PART_ALL, RobotLed.MODE_GREEN);
-                tvRobot.setText("¡Lo has conseguido! La memoria es como un músculo, ¡a seguir entrenando!");
-                hablarOSimular("¡Lo has conseguido! La memoria es como un músculo, ¡a seguir entrenando!");
+                tvRobot.setText(R.string.busca_fin_lento);
+                hablarOSimular(getString(R.string.busca_fin_lento));
             }
         }
 
