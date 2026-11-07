@@ -137,6 +137,7 @@
     <string name="permiso_denegado">Permission denied</string>
 
     <!-- Settings -->
+    <string name="ajustes_idioma">Language / Idioma</string>
     <string name="titulo_ajustes">Settings</string>
     <string name="ajustes_foto_actualizada">I have updated your profile photo.</string>
     <string name="ajustes_guardados_toast">Settings saved</string>

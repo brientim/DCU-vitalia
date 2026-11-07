@@ -26,7 +26,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import com.example.sanbotapp.util.AppConstants;
+import com.example.sanbotapp.util.DateTimeUtils;
 import com.example.sanbotapp.util.PhotoHelper;
+
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.os.LocaleListCompat;
 
 public class AjustesActivity extends BaseActivity {
 
@@ -124,8 +128,40 @@ public class AjustesActivity extends BaseActivity {
         Button btnGuardar = findViewById(R.id.btnGuardarAjustes);
         btnGuardar.setOnClickListener(v -> consolidarGuardarAjustes());
 
+        configurarIdioma();
+
         // Verificar permiso de escritura de ajustes del sistema al entrar
         verificarPermisosBrillo();
+    }
+
+    // ── Idioma ────────────────────────────────────────────────────────────────
+
+    private void configurarIdioma() {
+        Button btnEs = findViewById(R.id.btnIdiomaEs);
+        Button btnEn = findViewById(R.id.btnIdiomaEn);
+        if (btnEs == null || btnEn == null) return;
+
+        boolean ingles = "en".equals(DateTimeUtils.localeApp(this).getLanguage());
+        marcarIdioma(btnEs, !ingles);
+        marcarIdioma(btnEn, ingles);
+        btnEs.setOnClickListener(v -> cambiarIdioma("es"));
+        btnEn.setOnClickListener(v -> cambiarIdioma("en"));
+    }
+
+    private void marcarIdioma(Button boton, boolean seleccionado) {
+        boton.setSelected(seleccionado);
+        boton.setBackgroundResource(seleccionado ? R.drawable.bg_tipo_selected : R.drawable.bg_tipo_normal);
+        boton.setTextColor(seleccionado ? 0xFFFFFFFF : 0xFF1A1A1A);
+    }
+
+    /**
+     * Cambia el idioma de la app (textos, voz del asistente y contenido de los juegos).
+     * AppCompat lo guarda y recrea las Activities abiertas.
+     */
+    private void cambiarIdioma(String idioma) {
+        if (idioma.equals(DateTimeUtils.localeApp(this).getLanguage())) return;
+        guardarNombre();
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(idioma));
     }
 
     @Override

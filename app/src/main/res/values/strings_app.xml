@@ -137,6 +137,9 @@
     <string name="permiso_denegado">Permiso denegado</string>
 
     <!-- Ajustes -->
+    <string name="ajustes_idioma">Idioma / Language</string>
+    <string name="idioma_es" translatable="false">Español</string>
+    <string name="idioma_en" translatable="false">English</string>
     <string name="titulo_ajustes">Ajustes</string>
     <string name="ajustes_foto_actualizada">He actualizado tu foto de perfil.</string>
     <string name="ajustes_guardados_toast">Ajustes guardados correctamente</string>
