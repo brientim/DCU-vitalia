@@ -14,6 +14,16 @@ El proyecto implementa un sistema multi-flavor para facilitar el desarrollo:
 *   **`robot`**: Versión productiva. Utiliza el SDK de Qihan para controlar el hardware real (sensores, motores, voz).
 *   **`tablet`**: Versión de desarrollo. Simula el comportamiento del robot en dispositivos estándar para pruebas de interfaz y flujo.
 
+## 🌐 Idiomas (Español / English)
+
+La app está disponible en español (por defecto) e inglés. El idioma sigue al del sistema o se elige en **Ajustes → Idioma / Language**.
+*   **Textos de interfaz y voz**: `res/values/strings*.xml` (español) y `res/values-en/` (inglés).
+*   **Comandos de voz** ("sí", "guardar", "hora"…): listas de palabras clave en `res/values*/arrays_voz.xml`, comparadas con `util/VozComandos`.
+*   **Interpretación de horas, fechas y días dictados**: `util/VozParser` con una implementación por idioma (`VozParserEs`, `VozParserEn`) y tests en `app/src/test`.
+*   **Contenido de los juegos** (Mini-Rosco y Refranes): `res/raw/juego_*.json` y `res/raw-en/juego_*.json`.
+
+Para añadir otro idioma basta con crear las carpetas `values-xx/` y `raw-xx/` y, si hace falta, un `VozParser` nuevo.
+
 ## 📂 Organización de Módulos
 
 ### 🔵 Actividades y Recordatorios
