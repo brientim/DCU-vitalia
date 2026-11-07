@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.sanbotapp.BaseActivity;
 import com.example.sanbotapp.R;
-import com.qihancloud.opensdk.function.beans.LED;
+import com.example.sanbotapp.util.RobotLed;
 
 import java.util.ArrayList;
 import java.util.List;

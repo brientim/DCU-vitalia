@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.sanbotapp.BaseActivity;
 import com.example.sanbotapp.R;
-import com.qihancloud.opensdk.function.beans.LED;
+import com.example.sanbotapp.util.RobotLed;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -182,7 +182,7 @@ public class JuegoBuscaEncuentraActivity extends BaseActivity {
                 mostrarTodosLosIconosReales();
 
                 handler.postDelayed(() -> {
-                    apagarLed(LED.PART_ALL);
+                    apagarLed(RobotLed.PART_ALL);
                     Intent intent = new Intent(this, FinBuscaEncuentraActivity.class);
                     intent.putExtra("SEGUNDOS", segundos);
                     startActivity(intent);

@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.example.sanbotapp.BaseActivity;
 import com.example.sanbotapp.R;
-import com.qihancloud.opensdk.function.beans.LED;
+import com.example.sanbotapp.util.RobotLed;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +106,7 @@ public class JuegoRefranesActivity extends BaseActivity {
     }
 
     private void mostrarFeedbackCorrecto(int seleccion) {
-        encenderLed(LED.PART_ALL, LED.MODE_GREEN);
+        encenderLed(RobotLed.PART_ALL, RobotLed.MODE_GREEN);
         Button boton = (seleccion == 1) ? btnOpcion1 : btnOpcion2;
         boton.setBackgroundResource(R.drawable.bg_tipo_correcto);
         boton.setTextColor(Color.WHITE);
@@ -115,7 +115,7 @@ public class JuegoRefranesActivity extends BaseActivity {
         hablarOSimular("¡Correcto! Excelente respuesta");
 
         handler.postDelayed(() -> {
-            apagarLed(LED.PART_ALL);
+            apagarLed(RobotLed.PART_ALL);
 
             handler.postDelayed(() -> {
                 restaurarBotones();
@@ -127,7 +127,7 @@ public class JuegoRefranesActivity extends BaseActivity {
     }
 
     private void mostrarFeedbackIncorrecto(int seleccionIncorrecta, int correcta) {
-        encenderLed(LED.PART_ALL, LED.MODE_RED);
+        encenderLed(RobotLed.PART_ALL, RobotLed.MODE_RED);
 
         Button botonIncorrecto = (seleccionIncorrecta == 1) ? btnOpcion1 : btnOpcion2;
         botonIncorrecto.setBackgroundResource(R.drawable.bg_tipo_incorrecto);
@@ -144,7 +144,7 @@ public class JuegoRefranesActivity extends BaseActivity {
 
         // Esperar a que termine la emoción y el TTS antes de mostrar feedback visual
         handler.postDelayed(() -> {
-            apagarLed(LED.PART_ALL);
+            apagarLed(RobotLed.PART_ALL);
 
             handler.postDelayed(() -> {
                 restaurarBotones();

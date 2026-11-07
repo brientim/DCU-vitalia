@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.sanbotapp.BaseActivity;
 import com.example.sanbotapp.R;
-import com.qihancloud.opensdk.function.beans.LED;
+import com.example.sanbotapp.util.RobotLed;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -162,7 +162,7 @@ public class JuegoMiniRoscoActivity extends BaseActivity {
         hablarOSimular("¡Correcto!");
 
         handler.postDelayed(() -> {
-            apagarLed(LED.PART_ALL);
+            apagarLed(RobotLed.PART_ALL);
             restaurarBotones();
             indiceActual++;
             mostrarPregunta();
@@ -188,7 +188,7 @@ public class JuegoMiniRoscoActivity extends BaseActivity {
         hablarOSimular("Lástima, te acercabas");
 
         handler.postDelayed(() -> {
-            apagarLed(LED.PART_ALL);
+            apagarLed(RobotLed.PART_ALL);
             restaurarBotones();
             indiceActual++;
             mostrarPregunta();

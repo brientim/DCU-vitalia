@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import com.example.sanbotapp.BaseActivity;
 import com.example.sanbotapp.R;
+import com.example.sanbotapp.util.RobotLed;
 
 public class FinBuscaEncuentraActivity extends BaseActivity {
 
@@ -20,17 +21,17 @@ public class FinBuscaEncuentraActivity extends BaseActivity {
         if (tvRobot != null) {
             if (segundos < 3) {
                 mostrarEmocion("SURPRISE");
-                encenderLed(com.qihancloud.opensdk.function.beans.LED.PART_ALL, com.qihancloud.opensdk.function.beans.LED.MODE_GREEN);
+                encenderLed(RobotLed.PART_ALL, RobotLed.MODE_GREEN);
                 tvRobot.setText("¡Increíble! Lo has encontrado en un abrir y cerrar de ojos.");
                 hablarOSimular("¡Increíble! Lo has encontrado en un abrir y cerrar de ojos.");
             } else if (segundos < 10) {
                 mostrarEmocion("PRISE");
-                encenderLed(com.qihancloud.opensdk.function.beans.LED.PART_ALL, com.qihancloud.opensdk.function.beans.LED.MODE_GREEN);
+                encenderLed(RobotLed.PART_ALL, RobotLed.MODE_GREEN);
                 tvRobot.setText("¡Con tu ayuda lo he encontrado! ¡Eres increíble!");
                 hablarOSimular("¡Con tu ayuda lo he encontrado! ¡Eres increíble!");
             } else {
                 mostrarEmocion("SMILE");
-                encenderLed(com.qihancloud.opensdk.function.beans.LED.PART_ALL, com.qihancloud.opensdk.function.beans.LED.MODE_GREEN);
+                encenderLed(RobotLed.PART_ALL, RobotLed.MODE_GREEN);
                 tvRobot.setText("¡Lo has conseguido! La memoria es como un músculo, ¡a seguir entrenando!");
                 hablarOSimular("¡Lo has conseguido! La memoria es como un músculo, ¡a seguir entrenando!");
             }
